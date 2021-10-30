@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.hamcrest.Matcher.*;
 
 import static org.junit.Assert.*;
 
@@ -26,5 +27,20 @@ public class HelloControllerTest {
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(hello));
+    }
+
+    @Test
+    public void helloDto_리턴() throws Exception{
+        String name = "test";
+        int amount = 1000;
+
+        mvc.perform(
+                get("/hello/dto")
+                .param("name", name)
+                .param("amount", String.valueOf(amount))
+        )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(name))
+                .andExpect(jsonPath("$.amount").value(amount));
     }
 }

@@ -55,6 +55,7 @@ public class PostsPageControllerTest {
         // then
         List<Posts> all = repository.findAll();
 
+        // 오류발생
         assertThat(all.get(0).getTitle()).isEqualTo("테스트");
     }
 }

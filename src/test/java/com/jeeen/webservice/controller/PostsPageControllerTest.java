@@ -45,7 +45,7 @@ public class PostsPageControllerTest {
                 .author(author)
                 .build();
 
-        String url = "http://localhost:" + port + "/posts/save";
+        String url = "http://localhost:" + port + "/api/v1/posts";
 
         HttpEntity<PostsFormDto> requestEntity = new HttpEntity<>(dto);
 

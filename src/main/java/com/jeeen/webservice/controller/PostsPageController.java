@@ -25,7 +25,7 @@ public class PostsPageController {
     }
 
     @PostMapping("/posts/save")
-    public String postsSave(PostsFormDto formDto, BindingResult result){
+    public String postsSave(@Valid PostsFormDto formDto, BindingResult result){
         if(result.hasErrors()){
             return "/posts/save";
         }

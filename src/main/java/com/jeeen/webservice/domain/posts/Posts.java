@@ -16,10 +16,10 @@ public class Posts extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 500, nullable = false)
+    @Column
     private String title;
 
-    @Column(columnDefinition = "TEXT",nullable = false)
+    @Column
     private String content;
 
     private String author;

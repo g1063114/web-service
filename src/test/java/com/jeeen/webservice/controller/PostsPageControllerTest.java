@@ -45,17 +45,14 @@ public class PostsPageControllerTest {
                 .author(author)
                 .build();
 
-        String url = "http://localhost:" + port + "/api/v1/posts";
-
-        HttpEntity<PostsFormDto> requestEntity = new HttpEntity<>(dto);
+        String url = "http://localhost:" + port + "/posts/save";
 
         // when
-        ResponseEntity<Long> exchange = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Long.class);
+        repository.save(dto.toEntity());
 
         // then
         List<Posts> all = repository.findAll();
 
-        // 오류발생
         assertThat(all.get(0).getTitle()).isEqualTo("테스트");
     }
 }

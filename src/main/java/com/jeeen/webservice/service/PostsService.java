@@ -2,15 +2,14 @@ package com.jeeen.webservice.service;
 
 import com.jeeen.webservice.domain.posts.Posts;
 import com.jeeen.webservice.domain.posts.PostsRepository;
-import com.jeeen.webservice.web.dto.PostsResponseDto;
-import com.jeeen.webservice.web.dto.PostsSaveRequestDto;
-import com.jeeen.webservice.web.dto.PostsUpdateRequestDto;
+import com.jeeen.webservice.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -25,6 +24,12 @@ public class PostsService {
     @Transactional
     public Long savePost(Posts posts){
         return postsRepository.save(posts).getId();
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> postsList(){
+        return postsRepository.findAllDesc().stream().map(posts -> new PostsListResponseDto(posts))
+                .collect(Collectors.toList());
     }
 
     @Transactional

@@ -61,4 +61,10 @@ public class PostsPageController {
         postsService.update(id,updateDto);
         return "redirect:/posts";
     }
+
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable("id") Long id){
+        postsService.delete(id);
+        return "redirect:/posts";
+    }
 }

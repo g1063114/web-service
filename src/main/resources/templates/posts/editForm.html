@@ -29,12 +29,20 @@
       <input type="text" th:field="*{content}" class="form-control" >
     </div>
     <br>
-    <button type="submit" id="enroll" class="btn btn-primary">Submit</button>
+    <button type="submit" id="enroll" class="btn btn-primary">수정</button>
+    <a href="#" th:href="'javascript:cancel('+${form.id}+')'"
+       class="btn btn-danger">삭제</a>
   </form>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-
+  function cancel(id) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/posts/" + id + "/delete");
+    document.body.appendChild(form);
+    form.submit();
+ }
 </script>
 </html>

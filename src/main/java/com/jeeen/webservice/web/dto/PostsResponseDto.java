@@ -2,8 +2,10 @@ package com.jeeen.webservice.web.dto;
 
 import com.jeeen.webservice.domain.posts.Posts;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class PostsResponseDto {
 
     private Long id;

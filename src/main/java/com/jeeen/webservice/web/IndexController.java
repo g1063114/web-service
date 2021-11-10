@@ -1,5 +1,6 @@
 package com.jeeen.webservice.web;
 
+import com.jeeen.webservice.config.auth.LoginUser;
 import com.jeeen.webservice.config.auth.dto.SessionUser;
 import com.jeeen.webservice.service.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +15,9 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    public String index(Model model, @LoginUser SessionUser user){
         if( user != null ){
             model.addAttribute("userName", user.getName());
         }

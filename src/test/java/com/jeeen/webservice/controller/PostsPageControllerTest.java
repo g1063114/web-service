@@ -55,4 +55,6 @@ public class PostsPageControllerTest {
 
         assertThat(all.get(0).getTitle()).isEqualTo("테스트");
     }
+
+    // aws ec2 , rds 작업중
 }

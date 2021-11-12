@@ -4,6 +4,12 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  profiles:
+    include: oauth
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
 
   jpa:
     hibernate:
